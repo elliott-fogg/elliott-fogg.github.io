@@ -4,13 +4,54 @@
 	<title>You got this</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/reuleaux.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/trefoil.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/helix.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/newtonsCradle.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/jelly.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ripples.js"></script>
 </head>
 <body>
 	<div class="container">
 		<section class="text-center">
-			<h1>Look after this guy</h1>
-			<image src="me3.jpg" width=90%></image>
-
+			<h1>Hello There</h1>
+			<p>It looks like you've got a little distracted. How about having a look at some of these cool things instead for a few minutes?</p>
+			<div>
+				<l-reuleaux size="37" stroke="5" stroke-length="0.15" 
+					bg-opacity="0.1" speed="0.5" color="red" ></l-reuleaux>
+			</div>
+			<div>
+				<l-trefoil size="40" stroke="4" stroke-length="0.15"
+			  		bg-opacity="0.05" speed="1.4" color="rgb(13,183,0)">
+			  	</l-trefoil>
+			</div>
+			<div>
+				<l-helix size="45" speed="2.5" color="rgb(7,155,192)"></l-helix>
+			</div>
+			<div>
+				<l-quantum size="45" speed="1.75" color="#E894FF"></l-quantum>
+			</div>
+			<div>
+				<l-newtons-cradle size="78" speed="1.4" color="#FFC494">
+				</l-newtons-cradle>
+			</div>
+			<div>
+				<l-jelly size="40" speed="0.9" color="#FF99D4"></l-jelly>
+			</div>
+			<div>
+				<l-ripples size="45" speed="2" color="#121DAF"></l-ripples>
+			</div>
+			<div>
+				<p>Or try having a go at this, if you're really distracted for a few minutes:</p>
+				<script>
+					function go_to_random_connect() {
+						var seed = Math.random();
+						location.href=`https://kylehaas.xyz/connect/?s=${seed}&side=5&stations=5`;
+					}
+				</script>
+				<input type="button" onclick="go_to_random_connect()" value="Connect">
+			</div>
 		</section>
 	</div>
 </body>
