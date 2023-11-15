@@ -42,7 +42,7 @@ function ldrsDisplay (moduleName) {
 
 
 export function ldrsLoadAndDisplay(moduleName) {
-    loadLdrsModule(moduleName)
+    ldrsLoad(moduleName)
     .then( data => {
         console.log("Imported module successfully", data);
         ldrsDisplay(moduleName);
