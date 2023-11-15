@@ -27,6 +27,13 @@ function loadLdrsModule (module, async=true, type="module") {
 loadLdrsModule("ring")
     .then( data => {
         console.log("Script loaded successfully", data);
+        const ldrsRing = document.createElement("l-ring");
+        ldrsRing.setAttribute("size", "40");
+        ldrsRing.setAttribute("stroke", "5");
+        ldrsRing.setAttribute("bg-opacity", "0.1");
+        ldrsRing.setAttribute("speed", "2");
+        ldrsRing.setAttribute("color", "black");
+        document.body.append(ldrsRing);
     })
     .catch( err => {
         console.error(err);
