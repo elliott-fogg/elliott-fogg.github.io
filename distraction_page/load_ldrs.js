@@ -85,15 +85,36 @@ const colorsList = ["#0DB700",
                     "black"];
 
 
+function hslToHex(hue, saturation, lightness) {
+    lightness /= 100;
+    const a = saturation * Math.min(lightness, 1-lightness) / 100;
+    const f = n => {
+        const k = (n + hue/30) % 12;
+        const color = lightness - a * Math.max(Math.min(k -3, 9-k, 1), -1);
+        return Math.round(255*color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+
+function randomColor() {
+    let hue = Math.round(Math.random()*360);
+    let lightness = Math.round(Math.random()*40) + 35;
+    return hslToHex(hue, 100, lightness);
+    // return `hsl(${hue}, 100%, ${lightness}%)`;
+}
+
+
 function ldrsRandomise() {
     let moduleName = ldrsList[Math.floor(Math.random()*ldrsList.length)];
     let stroke = Math.round(Math.random()*19) + 1; // 1 - 20;
     let strokeLength = Math.random()*0.25 + 0.05; // 0.05 - 0.30;
     let bgopacity = Math.random()*0.6; // 0 - 0.6;
     let speed = Math.random()*2.5 + 0.5; // 0.5 - 3.0;
-    let color = colorsList[Math.floor(Math.random()*colorsList.length)];
+    // let color = colorsList[Math.floor(Math.random()*colorsList.length)];
+    let color = randomColor();
     ldrsLoadAndDisplay(moduleName, stroke, strokeLength, bgopacity, speed, color);
 }
 
-ldrsLoadAndDisplay("ring");
+ldrsRandomise();
 document.getElementById("ldrs-button").onclick = function() {ldrsRandomise()};
