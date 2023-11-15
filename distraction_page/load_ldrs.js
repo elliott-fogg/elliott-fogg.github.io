@@ -1,4 +1,4 @@
-function loadLdrsModule (module, async=true, type="text/javascript") {
+function loadLdrsModule (module, async=true, type="module") {
     return new Promise((resolve, reject) => {
         try {
             const scriptEle = document.createElement("script");
