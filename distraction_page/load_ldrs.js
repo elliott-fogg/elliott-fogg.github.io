@@ -49,7 +49,7 @@ export function ldrsLoadAndDisplay(moduleName) {
     })
     .catch( err => {
         console.error(err);
-    }
+    });
 }
 
 const ldrsList = ["ring", "ring2", "tailspin", "lineSpinner", "squircle", 
