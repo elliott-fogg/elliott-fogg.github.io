@@ -5,6 +5,7 @@ function ldrsLoad (moduleName, async=true, type="module") {
             scriptEle.type = type;
             scriptEle.async = async;
             scriptEle.src = `https://cdn.jsdelivr.net/npm/ldrs/dist/auto/${moduleName}.js`;
+            scriptEle.id = "ldrs-script";
 
             scriptEle.addEventListener("load", (ev) => {
                 resolve({ status: true });
@@ -17,7 +18,8 @@ function ldrsLoad (moduleName, async=true, type="module") {
                 });
             });
 
-            document.body.appendChild(scriptEle);
+            document.getElementById("ldrs-script").replaceWith(scriptEle);
+            // document.body.appendChild(scriptEle);
         } catch (error) {
             reject(error);
         }

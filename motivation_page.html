@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>You got this</title>
+	<title>Distracted?</title>
+	<link rel="icon" type="image/png" href="./distraction_page/ObiDoneKenobi.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/reuleaux.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/trefoil.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/helix.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/newtonsCradle.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/jelly.js"></script>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/ripples.js"></script>
 	<script type="text/javascript" src="./distraction_page/load_ldrs.js" defer></script>
 	<link rel="stylesheet" href="./distraction_page/distraction_page.css">
 
@@ -24,30 +18,38 @@
 <body>
 	<div class="container">
 		<section class="text-center">
+
 			<h1>
 				Hello There
-				<img src="https://cdn3.emoji.gg/emojis/8794-hellotherekenobi.png" width="32px" height="32px" alt="HelloThereKenobi"></a>
+				<img src="./distraction_page/ObiDoneKenobi.png" width="36px" style="position: relative; top: -4px">
 			</h1>
+			
 			<p>It looks like you've got a little distracted. How about having a look at some of these cool things instead for a few minutes?</p>
-			<div class="ldrs-container">
-				<p id="ldrs-element"></p>
-			</div>
 
-			<div>
-				<p class="description">Style: <span id="ldrs-style">UNKOWN</span></p>
-				<p class="description">Stroke: <span id="ldrs-stroke">UNKOWN</span></p>
-				<p class="description">StrokeLength: <span id="ldrs-slength">UNKOWN</span></p>
-				<p class="description">BG-Opacity: <span id="ldrs-bgopacity">UNKOWN</span></p>
-				<p class="description">Speed: <span id="ldrs-speed">UNKOWN</span></p>
-				<p class="description">Colour: <span id="ldrs-color">UNKOWN</span></p>
-			</div>
+			<div class="section">
+				<div class="ldrs-container">
+					<p id="ldrs-element"></p>
+				</div>
 
-			<div style="margin-bottom: 30px">
+				<div>
+					<p class="description">Style: <span id="ldrs-style">UNKOWN</span></p>
+					<p class="description">Stroke: <span id="ldrs-stroke">UNKOWN</span></p>
+					<p class="description">StrokeLength: <span id="ldrs-slength">UNKOWN</span></p>
+				</div>
+				<div>
+					<p class="description">BG-Opacity: <span id="ldrs-bgopacity">UNKOWN</span></p>
+					<p class="description">Speed: <span id="ldrs-speed">UNKOWN</span></p>
+					<p class="description">Colour: <span id="ldrs-color">UNKOWN</span></p>
+				</div>
+
 				<input type="button" id="ldrs-button" value="Change">
 			</div>
+
 			<div>
-				<p>Or try having a go at this, if you're really distracted for a few minutes:</p>
-				<img src="./distraction_page/asterisk.svg" alt="Connect Icon (-ish)" height="48px" stroke="red" onclick="go_to_random_connect()">
+				<p class="inline-text">Or try having a go at this, if you're really distracted for a few minutes:</p>
+				<img src="./distraction_page/asterisk.svg" class="img-link" height="48px" onclick="go_to_random_connect()">
+			</div>
+			<script id="ldrs-script"></script>
 		</section>
 	</div>
 </body>
