@@ -79,3 +79,4 @@ const ldrsList = ["ring", "ring2", "tailspin", "lineSpinner", "squircle",
 //     });
 
 ldrsLoadAndDisplay("ring");
+document.getElementById("ldrs-button").onclick = function() {ldrsLoadAndDisplay("squircle")};
