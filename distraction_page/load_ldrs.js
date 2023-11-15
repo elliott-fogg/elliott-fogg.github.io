@@ -25,32 +25,44 @@ function ldrsLoad (moduleName, async=true, type="module") {
 };
 
 
-function ldrsDisplay (moduleName) {
+function ldrsDisplay (moduleName, stroke="5", strokeLength="0.05", 
+                      bgopacity="0.1", speed="2", color="black") {
     var objName = moduleName.split(/(?=[A-Z\d])/)
                         .map(s=>s.toLowerCase())
                         .join("-");
     var elem = document.getElementById("ldrs-element");
     var newElem = document.createElement(`l-${objName}`);
-    newElem.setAttribute("size", "40");
-    newElem.setAttribute("stroke", "5");
-    newElem.setAttribute("bg-opacity", "0.1");
-    newElem.setAttribute("speed", "2");
-    newElem.setAttribute("color", "black");
+    newElem.setAttribute("size", "100");
+    newElem.setAttribute("stroke", stroke);
+    newElem.setAttribute("strokeLength", strokeLength);
+    newElem.setAttribute("bg-opacity", bgopacity);
+    newElem.setAttribute("speed", speed);
+    newElem.setAttribute("color", color);
     elem.replaceWith(newElem);
     newElem.id = "ldrs-element";
+
+    document.getElementById("ldrs-style").innerHTML = moduleName;
+    document.getElementById("ldrs-stroke").innerHTML = Number(stroke).toFixed(0);
+    document.getElementById("ldrs-slength").innerHTML = Number(strokeLength).toFixed(2);
+    document.getElementById("ldrs-bgopacity").innerHTML = Number(bgopacity).toFixed(2);
+    document.getElementById("ldrs-speed").innerHTML = Number(speed).toFixed(1);
+    document.getElementById("ldrs-color").innerHTML = color;
 }
 
 
-export function ldrsLoadAndDisplay(moduleName) {
+function ldrsLoadAndDisplay(moduleName, stroke="5", strokeLength="0.05", 
+                            bgopacity="0.1", speed="2", color="black") {
     ldrsLoad(moduleName)
     .then( data => {
         console.log("Imported module successfully", data);
-        ldrsDisplay(moduleName);
+        console.log("Changing LDRS", moduleName, stroke, strokeLength, bgopacity, speed, color);
+        ldrsDisplay(moduleName, stroke, strokeLength, bgopacity, speed, color);
     })
     .catch( err => {
         console.error(err);
     });
 }
+
 
 const ldrsList = ["ring", "ring2", "tailspin", "lineSpinner", "squircle", 
                   "square", "reuleaux", "tailChase", "dotSpinner", "spiral", 
@@ -62,21 +74,24 @@ const ldrsList = ["ring", "ring2", "tailspin", "lineSpinner", "squircle",
                   "metronome", "jelly", "jellyTriangle", "mirage", "ping", 
                   "pulsar", "ripples", "miyagi", "pinwheel"]
 
+const colorsList = ["#0DB700", 
+                    "#079BC0", 
+                    "#E894FF", 
+                    "#FFC494", 
+                    "#FF99D4", 
+                    "#121DAF", 
+                    "black"];
 
-// loadLdrsModule("ring")
-//     .then( data => {
-//         console.log("Script loaded successfully", data);
-//         const ldrsRing = document.createElement("l-ring");
-//         ldrsRing.setAttribute("size", "40");
-//         ldrsRing.setAttribute("stroke", "5");
-//         ldrsRing.setAttribute("bg-opacity", "0.1");
-//         ldrsRing.setAttribute("speed", "2");
-//         ldrsRing.setAttribute("color", "black");
-//         document.body.append(ldrsRing);
-//     })
-//     .catch( err => {
-//         console.error(err);
-//     });
+
+function ldrsRandomise() {
+    let moduleName = ldrsList[Math.floor(Math.random()*ldrsList.length)];
+    let stroke = Math.round(Math.random()*19) + 1; // 1 - 20;
+    let strokeLength = Math.random()*0.25 + 0.05; // 0.05 - 0.30;
+    let bgopacity = Math.random()*0.6; // 0 - 0.6;
+    let speed = Math.random()*2.5 + 0.5; // 0.5 - 3.0;
+    let color = colorsList[Math.floor(Math.random()*colorsList.length)];
+    ldrsLoadAndDisplay(moduleName, stroke, strokeLength, bgopacity, speed, color);
+}
 
 ldrsLoadAndDisplay("ring");
-document.getElementById("ldrs-button").onclick = function() {ldrsLoadAndDisplay("squircle")};
+document.getElementById("ldrs-button").onclick = function() {ldrsRandomise()};
